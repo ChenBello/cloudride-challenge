@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hello Cloudride ☁️</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    background: linear-gradient(120deg, #89f7fe, #66a6ff);
+    transition: background 0.5s ease;
+    overflow-x: hidden;
+  }
+
+  #hello {
+    font-size: 3em;
+    margin: 20px;
+    transition: all 0.5s ease;
+    display: inline-block;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  }
+
+  button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background 0.3s;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+    background: #eef;
+  }
+
+  #log {
+    margin-top: 40px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .msg {
+    margin: 5px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .cloud-icon {
+    font-size: 1.5em;
+    margin-right: 8px;
+    animation: floatCloud 2s infinite alternate ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes floatCloud {
+    from { transform: translateY(0); }
+    to { transform: translateY(-5px); }
+  }
+
+</style>
+</head>
+<body>
+
+<h1>Hello Cloudride ☁️</h1>
+<button onclick="sayHello()">Say Hello!</button>
+
+<div id="hello"></div>
+<div id="log"></div>
+
+<script>
+// Random color from preset palette
+function randomColor() {
+  const colors = ['#0d3b66','#faa916','#f4d35e','#ee6c4d','#3d5a80'];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
+// Random font size between 2em and 4em
+function randomSize() {
+  return 2 + Math.random() * 2;
+}
+
+// Random rotation between -30deg and +30deg
+function randomRotate() {
+  return (Math.random()*60 - 30) + 'deg';
+}
+
+// Random background gradient
+function randomBackground() {
+  const gradients = [
+    'linear-gradient(120deg, #89f7fe, #66a6ff)',
+    'linear-gradient(120deg, #f5f7fa, #c3cfe2)',
+    'linear-gradient(120deg, #a1c4fd, #c2e9fb)',
+    'linear-gradient(120deg, #d4fc79, #96e6a1)'
+  ];
+  return gradients[Math.floor(Math.random() * gradients.length)];
+}
+
+function sayHello() {
+  const helloDiv = document.getElementById('hello');
+  const logDiv = document.getElementById('log');
+
+  const messages = ["Hello Cloudride!", "Deploy Success!", "Hello World!", "Cloud Ready!"];
+  const msg = messages[Math.floor(Math.random() * messages.length)];
+
+  // Animate the main Hello text
+  helloDiv.textContent = msg;
+  helloDiv.style.color = randomColor();
+  helloDiv.style.fontSize = randomSize() + 'em';
+  helloDiv.style.transform = `rotate(${randomRotate()}) scale(${1 + Math.random()})`;
+
+  // Change the page background
+  document.body.style.background = randomBackground();
+
+  // Add message to the log with a cloud icon
+  const newMsg = document.createElement('div');
+  newMsg.className = 'msg';
+  newMsg.innerHTML = `<span class="cloud-icon">☁️</span>${msg}`;
+  newMsg.style.color = randomColor();
+  logDiv.prepend(newMsg);
+
+  // Small cloud confetti effect
+  for(let i=0; i<10; i++){
+    const c = document.createElement('div');
+    c.textContent = "☁️";
+    c.style.position = 'fixed';
+    c.style.left = Math.random()*window.innerWidth+'px';
+    c.style.top = '0px';
+    c.style.fontSize = (10+Math.random()*20)+'px';
+    c.style.opacity = Math.random();
+    c.style.transition = 'top 1s ease-out, opacity 1s ease-out';
+    document.body.appendChild(c);
+    setTimeout(()=>{ c.style.top = window.innerHeight+'px'; c.style.opacity=0; },10);
+    setTimeout(()=>{ c.remove(); },1100);
+  }
+}
+
+// Auto-trigger sayHello every 2 seconds
+setInterval(sayHello, 2000);
+</script>
+
+</body>
+</html>
