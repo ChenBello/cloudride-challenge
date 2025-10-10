@@ -57,6 +57,7 @@ jobs:
 
       - name: Notify Slack on Success
         if: success()
+        continue-on-error: true
         run: |
           COMMIT_MESSAGE=$(echo "${{ github.event.head_commit.message }}" | jq -Rs .)
           TEXT="✅ *Deployment succeeded!*• *Service:* $ECS_BACKEND_SERVICE• *Cluster:* $ECS_CLUSTER• *User:* ${{ github.actor }}• *Commit:* $(echo $COMMIT_MESSAGE | jq -r .)"
@@ -67,6 +68,7 @@ jobs:
 
       - name: Notify Slack on Failure
         if: failure()
+        continue-on-error: true
         run: |
           COMMIT_MESSAGE=$(echo "${{ github.event.head_commit.message }}" | jq -Rs .)
           TEXT="❌ *Deployment failed!*• *Service:* $ECS_BACKEND_SERVICE• *Cluster:* $ECS_CLUSTER• *User:* ${{ github.actor }}• *Commit:* $(echo $COMMIT_MESSAGE | jq -r .)"
