@@ -137,7 +137,7 @@ A GitHub Actions workflow is included for continuous deployment.
 - Detects changes in the `application/` directory on push to `main`
 - Builds and pushes the Docker image to Amazon ECR
 - Triggers a new ECS deployment
-- Sends a Slack notification on success or failure
+- Sends a Slack notification on success or failure (Optional)
 - Supports manual deployment via workflow dispatch
   
 Here’s a visual overview of the workflow:
