@@ -8,10 +8,7 @@ module "vpc" {
     public_subnets     = var.public_subnets
     enable_nat_gateway = var.enable_nat_gateway
     enable_vpn_gateway = var.enable_vpn_gateway
-    enable_dns_support   = var.enable_dns_support  
+    enable_dns_support   = var.enable_dns_support
     enable_dns_hostnames = var.enable_dns_hostnames
-    # tags = {
-    #     Terraform  = "true"
-    #     Environment = "dev"
-    # }
+    single_nat_gateway = var.single_nat_gateway # 1 For costs reduction
 }

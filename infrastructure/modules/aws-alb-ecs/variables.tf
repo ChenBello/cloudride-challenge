@@ -54,4 +54,8 @@ variable "container_image" {
   default     = "chenbello3/cloudride-flask-app:latest" # image from Docker Hub
 }
 
+variable "alert_email" {
+  description = "Email address to receive CloudWatch alarms"
+  type        = string
+}
 
