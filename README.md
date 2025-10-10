@@ -111,17 +111,17 @@ This setup includes a CI/CD pipeline with GitHub Actions, which will trigger dep
 
 Here’s a diagram of the project’s architecture, showcasing the key components and how they interact. While the diagram illustrates the use of **AWS CodePipeline**, **AWS CodeDeploy** and **AWS CodeBuild** for CI/CD, in this project, **GitHub Actions** is used to manage the continuous integration and deployment process.
 
-![Architecture Diagram](https://github.com/ChenBello/ecs-terraform-pokemon-states/blob/aea20ae93de8aa5a00cf5924aa8745f5bf0f67ff/_Pokemon-app-terraform_.drawio.png)
+![Architecture Diagram](https://github.com/ChenBello/cloudride-challenge/blob/3cf316bea2009ba5d3b8284af1560b3cdf5f2783/docs/images/_app-architecture_.drawio.png)
 
 ## Detailed ECS & ALB Architecture
 The following diagrams illustrate how the system components interact — from internet traffic through Route 53, ALB, and into ECS Fargate tasks:
 
 ### Full AWS ECS Fargate Infrastructure
-<p align="center"> <img src="https://github.com/ChenBello/cloudride-challenge/blob/5f64e9fb3ed95c17cd312a12457b2965f274dba5/AWS_ECS_Fargate_Architecture.png?raw=true" alt="AWS ECS Fargate Full Architecture" width="800"/> </p>
+<p align="center"> <img src="https://github.com/ChenBello/cloudride-challenge/blob/3cf316bea2009ba5d3b8284af1560b3cdf5f2783/docs/images/AWS_ECS_Fargate_Architecture.png?raw=true" alt="AWS ECS Fargate Full Architecture" width="800"/> </p>
 This broader diagram captures the full infrastructure including VPC, subnets, ALB, ECS Service, Fargate Tasks, NAT Gateway, and Internet Gateway, reflecting the real AWS environment provisioned by Terraform.
 
 ### ALB and ECS Flow
-<p align="center"> <img src="https://github.com/ChenBello/cloudride-challenge/blob/5f64e9fb3ed95c17cd312a12457b2965f274dba5/ALB_ECS_Architecture.png?raw=true" alt="ALB to ECS Architecture" width="700"/> </p>
+<p align="center"> <img src="https://github.com/ChenBello/cloudride-challenge/blob/3cf316bea2009ba5d3b8284af1560b3cdf5f2783/docs/images/ALB_ECS_Architecture.png?raw=true" alt="ALB to ECS Architecture" width="700"/> </p>
 This diagram shows how the Application Load Balancer receives traffic from Route 53, uses a listener on port 80/443, and routes requests to a target group with IP-based Fargate tasks in private subnets.
 
 ---
@@ -141,7 +141,7 @@ A GitHub Actions workflow is included for continuous deployment.
 - Supports manual deployment via workflow dispatch
   
 Here’s a visual overview of the workflow:
-![GitHub Actions Workflow](https://github.com/ChenBello/cloudride-challenge/blob/914f571f6f96e86db4807eb358bf3233264f865b/GitHub_Actions_Workflow_Image.PNG?raw=true)
+![GitHub Actions Workflow](https://github.com/ChenBello/cloudride-challenge/blob/3cf316bea2009ba5d3b8284af1560b3cdf5f2783/docs/images/GitHub_Actions_Workflow_Image.PNG?raw=true)
 
 ---
 
@@ -195,7 +195,7 @@ This project uses a remote backend to store the Terraform state file securely:
 
 ## Diagram
 
-[![Terraform State Architecture](./state-file.drawio.png)](./state-file.drawio.png)
+[![Terraform State Architecture](docs/images/state-file.drawio.png)](docs/images/state-file.drawio.png)
 
 ### 💡 Why S3 + DynamoDB?
 
@@ -205,7 +205,7 @@ Using **S3** to store the Terraform state file allows for versioning and persist
 
 Below you can find a screenshot of the actual S3 bucket structure used for Terraform state files:
 
-![S3 Bucket Structure](https://github.com/ChenBello/cloudride-challenge/blob/650c31d85d6f80b38c28b6af957ee32695e67fdd/IMG_2020.png)
+![S3 Bucket Structure](https://github.com/ChenBello/cloudride-challenge/blob/3cf316bea2009ba5d3b8284af1560b3cdf5f2783/docs/images/IMG_2020.png)
 
 ---
 
