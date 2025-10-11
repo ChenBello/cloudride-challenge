@@ -1,3 +1,47 @@
+# Cloudride Technical Challenge - Chen Bello
+
+## Overview
+This repository contains the infrastructure and application code for a complete AWS deployment in region **eu-west-1**, using Terraform and ECS Fargate.  
+It follows AWS best practices for modular design, scalability, and automation, with CI/CD integration through GitHub Actions.
+
+## Architecture Diagram
+VPC → Public Subnets (ALB) → Private Subnets (ECS Fargate Tasks) → ECR
+
+## Deployment Steps
+1. Initialize Terraform backend  
+2. Apply the configurations in order: `bootstrap` → `network` → `ecs-fargate`  
+3. Push code to GitHub — pipeline builds the image and updates ECS automatically  
+
+---
+
+## AWS Well-Architected Pillars
+
+### Security
+- IAM roles follow least privilege principles  
+- ECS Task Execution Role limited to ECR and CloudWatch Logs  
+- ALB exposes only port 80, ECS tasks accept traffic only from the ALB Security Group  
+- No hard-coded credentials in the repository  
+
+### Reliability
+- Multi-AZ deployment (two private subnets across availability zones)  
+- ECS service Auto Scaling  
+- ALB health checks automatically replace unhealthy tasks  
+
+### Performance Efficiency
+- AWS Fargate for right-sized, serverless compute  
+- ALB efficiently distributes requests across ECS tasks  
+
+### Cost Optimization
+- Single NAT Gateway to reduce costs  
+- CloudWatch log retention policy (7 days) helps reduce storage costs  
+
+### Operational Excellence
+- Terraform for declarative IaC  
+- Remote backend with S3 + DynamoDB for state and locking  
+- GitHub Actions for CI/CD and ECS deployments  
+- CloudWatch alarms and SNS for monitoring  
+
+---
 
 # cloudride-hello-world
 
