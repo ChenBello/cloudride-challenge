@@ -1,9 +1,9 @@
 
 terraform {
   backend "s3" {
-    bucket         = "my-terraform-states-unique"
+    bucket         = "terraform-states-chenbello-cloudride-test"
     key            = "network/terraform.tfstate"
     region         = "eu-west-1"
-    dynamodb_table = "terraform-locks"
+    dynamodb_table = "terraform-locks-chenbello-cloudride-test"
   }
-}
+

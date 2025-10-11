@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "tf_state" {
-  bucket = "my-terraform-states-unique"
+  bucket = "terraform-states-chenbello-cloudride-test"
 
   lifecycle {
     prevent_destroy = true
@@ -19,7 +19,7 @@ resource "aws_s3_bucket_versioning" "tf_state_versioning" {
 }
 
 resource "aws_dynamodb_table" "tf_locks" {
-  name         = "terraform-locks"
+  name         = "terraform-locks-chenbello-cloudride-test"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
 
