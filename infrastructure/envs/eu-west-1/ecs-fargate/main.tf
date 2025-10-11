@@ -9,7 +9,7 @@ data "terraform_remote_state" "network" {
 }
 
 module "aws-alb-ecs" {
-  source = "../modules/aws-alb-ecs"
+  source = "../../../modules/aws-alb-ecs"
   vpc_id              = data.terraform_remote_state.network.outputs.vpc_id
   region              = var.region # "eu-west-1"
   app_name            = var.app_name # example: "pokemon"
