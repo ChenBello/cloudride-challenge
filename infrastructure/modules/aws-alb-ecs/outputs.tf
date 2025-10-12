@@ -11,3 +11,6 @@ output "alb_dns_name" {
   value       = aws_alb.application_load_balancer.dns_name
 }
 
+output "ecs_log_group_name" {
+  value = aws_cloudwatch_log_group.ecs_log_group.name
+}

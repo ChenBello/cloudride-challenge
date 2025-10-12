@@ -21,6 +21,11 @@ variable "container_image" {
   default     = "chenbello3/cloudride-flask-app:latest"
 }
 
+variable "alert_email" {
+  description = "Email to receive alerts"
+  type        = string
+}
+
 # variable "public_subnet_ids" {
 #   description = "List of public subnet IDs"
 #   type        = list(string)
