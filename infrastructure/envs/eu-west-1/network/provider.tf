@@ -4,7 +4,7 @@ provider "aws" {
     tags = {
       Terraform   = "true"
       Environment = "Dev"
-      Application = "Cloudride Challenge"
+      Application = "Cloudride Challenge Network"
     }
   }
 }

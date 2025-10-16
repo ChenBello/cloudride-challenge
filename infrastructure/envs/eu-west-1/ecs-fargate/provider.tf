@@ -4,7 +4,7 @@ provider "aws" {
     tags = {
       Terraform   = "true"
       Environment = "Dev"
-      Application = "Cloudride Flask App"
+      Application = "Cloudride Challenge ECS-Fargate"
     }
   }
 }
